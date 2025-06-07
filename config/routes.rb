@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 
   # Redirect root to dbviewer
   root to: redirect("/dbviewer")
+
+  # Health check endpoint
+  get "/up", to: "rails/health#show"
 end
