@@ -40,21 +40,21 @@ production:
     host: <%= ENV.fetch("DB_PGSQL_HOST") { "localhost" } %>
   cache:
     <<: *default
-    database: <%= ENV.fetch("POSTGRES_CACHE_DB") { "dbviewer_demo_production_cache" } %>
+    database: <%= ENV.fetch("DB_PGSQL_CACHE_DB") { "dbviewer_demo_production_cache" } %>
     username: <%= ENV.fetch("DB_PGSQL_USERNAME") { "postgres" } %>
     password: <%= ENV.fetch("DB_PGSQL_PASSWORD") { "" } %>
     host: <%= ENV.fetch("DB_PGSQL_HOST") { "localhost" } %>
     migrations_paths: db/cache_migrate
   queue:
     <<: *default
-    database: <%= ENV.fetch("POSTGRES_QUEUE_DB") { "dbviewer_demo_production_queue" } %>
+    database: <%= ENV.fetch("DB_PGSQL_QUEUE_DB") { "dbviewer_demo_production_queue" } %>
     username: <%= ENV.fetch("DB_PGSQL_USERNAME") { "postgres" } %>
     password: <%= ENV.fetch("DB_PGSQL_PASSWORD") { "" } %>
     host: <%= ENV.fetch("DB_PGSQL_HOST") { "localhost" } %>
     migrations_paths: db/queue_migrate
   cable:
     <<: *default
-    database: <%= ENV.fetch("POSTGRES_CABLE_DB") { "dbviewer_demo_production_cable" } %>
+    database: <%= ENV.fetch("DB_PGSQL_CABLE_DB") { "dbviewer_demo_production_cable" } %>
     username: <%= ENV.fetch("DB_PGSQL_USERNAME") { "postgres" } %>
     password: <%= ENV.fetch("DB_PGSQL_PASSWORD") { "" } %>
     host: <%= ENV.fetch("DB_PGSQL_HOST") { "localhost" } %>
