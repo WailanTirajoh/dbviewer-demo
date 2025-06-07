@@ -62,4 +62,4 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "dbviewer", "~> 0.6.5"
+gem "dbviewer", "~> 0.6.6"
