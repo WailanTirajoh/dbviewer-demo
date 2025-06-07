@@ -379,6 +379,7 @@ DEPENDENCIES
   capybara
   dbviewer (~> 0.6.6)
   debug
+  dotenv
   importmap-rails
   jbuilder
   kamal
