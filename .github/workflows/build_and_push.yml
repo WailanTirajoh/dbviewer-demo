@@ -1,22 +1,22 @@
-name: Build and Push Docker Image
+name: Build and Deploy dbviewer
 
 on:
   push:
     branches:
       - main
-      - master
     tags:
       - "v*"
   workflow_dispatch:
 
 jobs:
-  docker:
+  build_and_push:
+    name: Build and Push Image
     runs-on: self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Docker meta
+      - name: Docker metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
@@ -34,7 +34,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Login to Docker Hub
+      - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -49,3 +49,19 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+  deploy:
+    name: Deploy
+    runs-on: self-hosted
+    needs: build_and_push
+
+    defaults:
+      run:
+        working-directory: ${{ secrets.DEPLOY_DIR }}
+
+    steps:
+      - name: Pull latest dbviewer image
+        run: docker compose pull dbviewer
+
+      - name: Restart dbviewer container
+        run: docker compose up -d dbviewer
