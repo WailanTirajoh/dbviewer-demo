@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_08_003740) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_08_011443) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -116,6 +116,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_08_003740) do
   end
 
   add_foreign_key "addresses", "customers"
+  add_foreign_key "categories", "categories", column: "parent_id", on_delete: :nullify
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "addresses", column: "billing_address_id"
