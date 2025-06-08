@@ -23,6 +23,27 @@
   </head>
 
   <body>
+    <% if notice.present? %>
+      <div class="notice"><%= notice %></div>
+    <% end %>
+    <% if alert.present? %>
+      <div class="alert"><%= alert %></div>
+    <% end %>
+    
+    <% if user_signed_in? %>
+      <div class="user-nav">
+        <div class="container">
+          <div class="brand">
+            <strong>DB Viewer Demo</strong>
+          </div>
+          <div class="user-info">
+            Logged in as <span class="user-email"><%= current_user.email %></span> 
+            <%= link_to "Logout", destroy_user_session_path, class: "logout-btn", data: { turbo_method: :delete } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>

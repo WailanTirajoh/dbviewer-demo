@@ -64,3 +64,4 @@ end
 
 gem "dotenv"
 gem "dbviewer", "~> 0.6.6"
+gem "devise", "~> 4.9"

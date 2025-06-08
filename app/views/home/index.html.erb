@@ -1,0 +1,71 @@
+<% content_for :title, "DB Viewer Demo - Interactive Database Explorer" %>
+
+<div class="landing-container">
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">DB Viewer Demo</h1>
+      <p class="hero-subtitle">
+        A powerful, secure interface for exploring and interacting with your database structure and data.
+        Perfect for developers, analysts, and database administrators.
+      </p>
+      <%= link_to "Access Dashboard", new_user_session_path, class: "hero-cta" %>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <h2 class="section-title">Key Features</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#5868E0">
+            <path d="M3 3h18v18H3V3zm16 16V7H5v12h14zM11 9h6v2h-6V9zm-4 0h2v2H7V9zm0 4h10v2H7v-2z"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Interactive SQL Editor</h3>
+        <p class="feature-description">
+          Write and execute SQL queries with syntax highlighting and auto-completion.
+          View results in a clean, paginated table interface.
+        </p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#5868E0">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Schema Browser</h3>
+        <p class="feature-description">
+          Navigate your database schema visually. Explore tables, columns, relationships, 
+          and indexes without writing a line of SQL.
+        </p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#5868E0">
+            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Secure Access</h3>
+        <p class="feature-description">
+          Role-based access control ensures data security. 
+          View audit logs to track who accessed what and when.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="demo-section">
+    <h2 class="section-title">Ready to Explore Your Data?</h2>
+    <p class="hero-subtitle" style="margin-bottom: 30px;">
+      This demo provides a pre-configured environment with sample data. 
+      Sign in to start exploring the full capabilities of DB Viewer.
+    </p>
+    <%= link_to "Access Dashboard", new_user_session_path, class: "demo-cta" %>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; <%= Date.today.year %> DB Viewer Demo | A secure, interactive database explorer</p>
+  </footer>
+</div>

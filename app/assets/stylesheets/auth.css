@@ -1,0 +1,270 @@
+.auth-container {
+  max-width: 450px;
+  margin: 80px auto 40px;
+  padding: 30px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgb.notice, .alert {
+    padding: 15px 20px;
+    margin: 0 0 20px;
+    border-radius: 0;
+    text-align: center;
+    font-weight: 500;
+    position: relative;
+  }
+
+  .notice {
+    background-color: #e7f3fe;
+    color: #1a73e8;
+    border-bottom: 1px solid rgba(26, 115, 232, 0.2);
+  }
+
+  .alert {
+    background-color: #feede7;
+    color: #d93025;
+    border-bottom: 1px solid rgba(217, 48, 37, 0.2);
+  }
+
+  .notice::before,
+  .alert::before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .notice::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8z' fill='%231a73e8'/%3E%3C/svg%3E");
+  }
+
+  .alert::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z' fill='%23d93025'/%3E%3C/svg%3E");
+  }
+  background-color: #fff;
+  position: relative;
+}
+
+.auth-container::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='64' height='64'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM7.07 18.28c.43-.9 3.05-1.78 4.93-1.78s4.5.88 4.93 1.78C15.57 19.36 13.86 20 12 20s-3.57-.64-4.93-1.72zm11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33C4.62 15.49 4 13.82 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6zm0 5c-.83 0-1.5-.67-1.5-1.5S11.17 8 12 8s1.5.67 1.5 1.5S12.83 11 12 11z' fill='%235868E0'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-container h2 {
+  margin: 30px 0 40px;
+  color: #333;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 22px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #444;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  background-color: #f9f9f9;
+}
+
+.form-control:focus {
+  border-color: #5868e0;
+  box-shadow: 0 0 0 3px rgba(88, 104, 224, 0.15);
+  background-color: #fff;
+  outline: none;
+}
+
+.form-group:hover label {
+  color: #5868e0;
+}
+
+.form-actions {
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #5868e0;
+  color: white;
+  box-shadow: 0 4px 12px rgba(88, 104, 224, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: #4959ca;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(88, 104, 224, 0.35);
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.demo-notice {
+  margin: 20px 0;
+  padding: 12px;
+  background-color: #fff8e1;
+  border-left: 4px solid #ffc107;
+  border-radius: 4px;
+}
+
+.demo-notice p {
+  margin: 0;
+  color: #856404;
+  font-size: 14px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.remember-me input {
+  margin-right: 8px;
+}
+
+.auth-links {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.auth-links a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
+}
+
+.notice,
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.notice {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.user-nav {
+  padding: 16px 0;
+  background-color: #fff;
+  border-bottom: 1px solid #e9ecef;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.user-nav .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-nav .brand {
+  font-size: 20px;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.user-nav .brand::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M5 12.5c0 2.76 2.24 5 5 5s5-2.24 5-5-2.24-5-5-5-5 2.24-5 5zm5-3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm7-4.5H3v14h14v-14zm2-2v18H1V3h18z' fill='%235868E0'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+}
+
+.user-nav .user-info {
+  font-size: 14px;
+  color: #555;
+  display: flex;
+  align-items: center;
+}
+
+.user-nav .user-email {
+  font-weight: 600;
+  color: #5868e0;
+  margin: 0 8px;
+}
+
+.logout-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #f1f3ff;
+  color: #5868e0;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  margin-left: 15px;
+}
+
+.logout-btn:hover {
+  background-color: #e6e9ff;
+  color: #4959ca;
+}

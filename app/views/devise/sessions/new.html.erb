@@ -1,0 +1,34 @@
+<div class="auth-container">
+  <h2>DB Viewer Demo Login</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group">
+      <%= f.label :email, "Email Address" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", value: "admin@example.com" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password, "Password" %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control", value: "password" %>
+    </div>
+    
+    <div class="demo-notice">
+      <p>This is a demo app. Login credentials are pre-filled for your convenience.</p>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="remember-me">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me, "Keep me signed in" %>
+      </div>
+    <% end %>
+
+    <div class="form-actions">
+      <%= f.submit "Access Database Viewer", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="footer-info" style="text-align: center; margin-top: 40px; color: #888; font-size: 14px;">
+  <p>&copy; <%= Date.today.year %> DB Viewer Demo | Secure Database Access</p>
+</div>

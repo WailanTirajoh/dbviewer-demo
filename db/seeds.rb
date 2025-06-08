@@ -493,3 +493,13 @@ negative_review_count.times do
 end
 
 puts "Seed data created successfully!"
+
+# Create a default admin user
+if User.count == 0
+  admin = User.create!(
+    email: 'admin@example.com',
+    password: 'password',
+    password_confirmation: 'password'
+  )
+  puts "Default admin user created: #{admin.email} (password: password)"
+end
