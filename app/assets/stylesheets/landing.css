@@ -4,6 +4,8 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-section {
@@ -180,10 +182,64 @@
   background-color: #4959ca;
 }
 
-.footer {
-  margin-top: 80px;
+/* GitHub section styling */
+.github-section {
+  padding: 3rem 1rem;
   text-align: center;
-  padding: 20px;
-  color: #777;
-  font-size: 14px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+}
+
+.github-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem auto;
+  max-width: 500px;
+}
+
+.github-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background-color: #24292e;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.github-link:hover {
+  background-color: #2c3137;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.github-link svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (min-width: 768px) {
+  .github-links {
+    flex-direction: row;
+    justify-content: center;
+    max-width: 800px;
+  }
+}
+
+/* Footer styling */
+.footer {
+  padding: 2rem 1rem;
+  text-align: center;
+  background-color: #343a40;
+  color: #ffffff;
+  font-size: 0.9rem;
+  width: 100%;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  box-sizing: border-box;
 }
