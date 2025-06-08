@@ -49,19 +49,3 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-  deploy:
-    name: Deploy
-    runs-on: self-hosted
-    needs: build_and_push
-
-    defaults:
-      run:
-        working-directory: ${{ env.DEPLOY_DIR }}
-
-    steps:
-      - name: Pull latest dbviewer image
-        run: docker compose pull dbviewer
-
-      - name: Restart dbviewer container
-        run: docker compose up -d dbviewer
