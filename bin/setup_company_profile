@@ -1,0 +1,20 @@
+#!/bin/bash
+# filepath: /Users/166612.wailan/dbviewer-demo/bin/setup_company_profile
+
+echo "============================================"
+echo "Setting up Company Profile Database"
+echo "============================================"
+
+echo "1. Creating company profile database..."
+bundle exec rails company_profile:create_db
+
+echo "2. Running migrations for company profile database..."
+bundle exec rails company_profile:migrate
+
+echo "3. Seeding company profile database with sample data..."
+bundle exec rails company_profile:seed
+
+echo "============================================"
+echo "Setup complete! You can now access the company profiles at:"
+echo "http://localhost:3000/company-profiles"
+echo "============================================"

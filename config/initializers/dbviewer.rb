@@ -20,16 +20,16 @@ Dbviewer.configure do |config|
   # }
 
   # Multiple database connections configuration
-  # config.database_connections = {
-  #   primary: {
-  #     connection_class: "ActiveRecord::Base",
-  #     name: "Primary Database"
-  #   },
-  #   secondary: {
-  #     connection_class: "SecondaryDatabase",
-  #     name: "Blog Database"
-  #   }
-  # }
+  config.database_connections = {
+    primary: {
+      connection_class: "ActiveRecord::Base",
+      name: "Ecommerce Database"
+    },
+    secondary: {
+      connection_class: "CompanyProfileRecord",
+      name: "Company Profile Database"
+    }
+  }
 
   # Set the default active connection
   # config.current_connection = :primary

@@ -1,0 +1,59 @@
+<div class="container mx-auto p-4">
+  <div class="mb-4">
+    <%= link_to "← Back to Posts", company_posts_path(@company.slug), class: "text-blue-600 hover:text-blue-800" %>
+  </div>
+  
+  <article class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
+    <% if @post.featured_image_url.present? %>
+      <div class="w-full">
+        <img src="<%= @post.featured_image_url %>" alt="<%= @post.title %>" class="w-full h-64 md:h-80 object-cover">
+      </div>
+    <% end %>
+    
+    <div class="p-6">
+      <h1 class="text-3xl font-bold mb-2"><%= @post.title %></h1>
+      
+      <div class="flex items-center text-gray-500 text-sm mb-6">
+        <% if @post.published_at.present? %>
+          <span><%= @post.published_at.strftime("%B %d, %Y") %></span>
+        <% end %>
+        
+        <% if @post.author.present? %>
+          <span class="mx-2">•</span>
+          <span>By <%= @post.author.name %></span>
+        <% end %>
+        
+        <% if @post.categories.any? %>
+          <span class="mx-2">•</span>
+          <span>
+            <% @post.categories.each_with_index do |category, index| %>
+              <%= category.name %><%= ", " unless index == @post.categories.size - 1 %>
+            <% end %>
+          </span>
+        <% end %>
+      </div>
+      
+      <div class="prose max-w-none">
+        <%= simple_format(@post.content) %>
+      </div>
+    </div>
+  </article>
+  
+  <% if @post.comments.approved.any? %>
+    <section class="bg-white rounded-lg shadow-md overflow-hidden mb-6 p-6">
+      <h2 class="text-2xl font-bold mb-4">Comments (<%= @post.comments.approved.count %>)</h2>
+      
+      <div class="space-y-4">
+        <% @post.comments.approved.each do |comment| %>
+          <div class="border-b pb-4">
+            <div class="flex justify-between items-center mb-2">
+              <strong class="font-medium"><%= comment.author_name %></strong>
+              <span class="text-gray-500 text-sm"><%= comment.created_at.strftime("%B %d, %Y") %></span>
+            </div>
+            <p><%= comment.content %></p>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+</div>

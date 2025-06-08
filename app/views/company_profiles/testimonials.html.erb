@@ -1,0 +1,89 @@
+<div class="container mx-auto p-4">
+  <div class="mb-4">
+    <%= link_to "← Back to #{@company.name}", company_profile_path(@company.slug), class: "text-blue-600 hover:text-blue-800" %>
+  </div>
+  
+  <h1 class="text-2xl font-bold mb-6">Testimonials - <%= @company.name %></h1>
+  
+  <% if @testimonials.featured.any? %>
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">Featured Testimonials</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <% @testimonials.featured.each do |testimonial| %>
+          <div class="bg-blue-50 border-l-4 border-blue-500 rounded-lg shadow-md p-6">
+            <div class="flex items-center mb-4">
+              <% if testimonial.avatar_url.present? %>
+                <img src="<%= testimonial.avatar_url %>" alt="<%= testimonial.author_name %>" class="w-12 h-12 rounded-full mr-4">
+              <% else %>
+                <div class="bg-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                  <span class="text-xl"><%= testimonial.author_name.first %></span>
+                </div>
+              <% end %>
+              <div>
+                <h3 class="font-semibold"><%= testimonial.author_name %></h3>
+                <% if testimonial.author_position.present? || testimonial.author_company.present? %>
+                  <p class="text-sm text-gray-600">
+                    <%= [testimonial.author_position, testimonial.author_company].compact.join(", ") %>
+                  </p>
+                <% end %>
+              </div>
+            </div>
+            <blockquote class="text-gray-700 italic mb-3">"<%= testimonial.content %>"</blockquote>
+            <% if testimonial.rating.present? && testimonial.rating > 0 %>
+              <div class="flex">
+                <% testimonial.rating.times do %>
+                  <svg class="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                <% end %>
+                <% (5 - testimonial.rating).times do %>
+                  <svg class="h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% @testimonials.where(featured: [false, nil]).each do |testimonial| %>
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <blockquote class="text-gray-700 italic mb-4">"<%= testimonial.content %>"</blockquote>
+        
+        <div class="mt-4">
+          <p class="font-semibold"><%= testimonial.author_name %></p>
+          <% if testimonial.author_position.present? || testimonial.author_company.present? %>
+            <p class="text-sm text-gray-600">
+              <%= [testimonial.author_position, testimonial.author_company].compact.join(", ") %>
+            </p>
+          <% end %>
+          
+          <% if testimonial.rating.present? && testimonial.rating > 0 %>
+            <div class="flex mt-2">
+              <% testimonial.rating.times do %>
+                <svg class="h-4 w-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              <% end %>
+              <% (5 - testimonial.rating).times do %>
+                <svg class="h-4 w-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @testimonials.empty? %>
+    <div class="text-center py-8">
+      <p class="text-xl text-gray-500">No testimonials found for this company.</p>
+    </div>
+  <% end %>
+</div>

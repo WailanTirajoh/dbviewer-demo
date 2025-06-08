@@ -1,0 +1,67 @@
+<div class="container mx-auto p-4">
+  <div class="mb-4">
+    <%= link_to "← Back to All Companies", company_profiles_path, class: "text-blue-600 hover:text-blue-800" %>
+  </div>
+  
+  <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
+    <div class="p-6">
+      <div class="flex items-center justify-between mb-6">
+        <h1 class="text-3xl font-bold"><%= @company.name %></h1>
+        <% if @company.logo_url.present? %>
+          <img src="<%= @company.logo_url %>" alt="<%= @company.name %> Logo" class="h-16">
+        <% end %>
+      </div>
+      
+      <div class="prose max-w-none mb-6">
+        <p class="text-lg"><%= @company.description %></p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Contact Information</h3>
+          <ul class="space-y-2">
+            <% if @company.website.present? %>
+              <li><span class="font-medium">Website:</span> <a href="<%= @company.website %>" target="_blank" class="text-blue-600 hover:underline"><%= @company.website %></a></li>
+            <% end %>
+            <% if @company.email.present? %>
+              <li><span class="font-medium">Email:</span> <a href="mailto:<%= @company.email %>" class="text-blue-600 hover:underline"><%= @company.email %></a></li>
+            <% end %>
+            <% if @company.phone.present? %>
+              <li><span class="font-medium">Phone:</span> <%= @company.phone %></li>
+            <% end %>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Location</h3>
+          <address class="not-italic">
+            <% if @company.address.present? %><%= @company.address %><br><% end %>
+            <% if @company.city.present? || @company.state.present? %>
+              <%= "#{@company.city}, #{@company.state}" %><br>
+            <% end %>
+            <% if @company.zip_code.present? %><%= @company.zip_code %><br><% end %>
+            <% if @company.country.present? %><%= @company.country %><% end %>
+          </address>
+        </div>
+      </div>
+      
+      <% if @company.social_media.present? && @company.social_media.any? %>
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-2">Social Media</h3>
+          <div class="flex space-x-4">
+            <% @company.social_media.each do |platform, handle| %>
+              <a href="#" class="text-blue-600 hover:underline"><%= "#{platform.capitalize}: #{handle}" %></a>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+        <%= link_to "Blog Posts", company_posts_path(@company.slug), class: "px-4 py-2 bg-blue-600 text-white text-center rounded hover:bg-blue-700" %>
+        <%= link_to "Team", company_employees_path(@company.slug), class: "px-4 py-2 bg-blue-600 text-white text-center rounded hover:bg-blue-700" %>
+        <%= link_to "Services", company_services_path(@company.slug), class: "px-4 py-2 bg-blue-600 text-white text-center rounded hover:bg-blue-700" %>
+        <%= link_to "Testimonials", company_testimonials_path(@company.slug), class: "px-4 py-2 bg-blue-600 text-white text-center rounded hover:bg-blue-700" %>
+      </div>
+    </div>
+  </div>
+</div>

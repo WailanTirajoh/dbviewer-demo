@@ -63,5 +63,5 @@ group :test do
 end
 
 gem "dotenv"
-gem "dbviewer", "~> 0.6.6"
+gem "dbviewer"
 gem "devise", "~> 4.9"

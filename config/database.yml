@@ -12,23 +12,41 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  <<: *default
-  database: dbviewer_demo_development
-  username: <%= ENV.fetch("DB_PGSQL_USERNAME", "postgres") %>
-  password: <%= ENV.fetch("DB_PGSQL_PASSWORD", "") %>
-  host: <%= ENV.fetch("DB_PGSQL_HOST", "localhost") %>
-  port: <%= ENV.fetch("DB_PGSQL_PORT", "5432") %>
+  primary:
+    <<: *default
+    database: dbviewer_demo_development
+    username: <%= ENV.fetch("DB_PGSQL_USERNAME", "postgres") %>
+    password: <%= ENV.fetch("DB_PGSQL_PASSWORD", "") %>
+    host: <%= ENV.fetch("DB_PGSQL_HOST", "localhost") %>
+    port: <%= ENV.fetch("DB_PGSQL_PORT", "5432") %>
+  company_profile:
+    <<: *default
+    database: dbviewer_company_profile_development
+    username: <%= ENV.fetch("DB_PGSQL_USERNAME", "postgres") %>
+    password: <%= ENV.fetch("DB_PGSQL_PASSWORD", "") %>
+    host: <%= ENV.fetch("DB_PGSQL_HOST", "localhost") %>
+    port: <%= ENV.fetch("DB_PGSQL_PORT", "5432") %>
+    migrations_paths: db/company_profile_migrate
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: dbviewer_demo_test
-  username: <%= ENV.fetch("DB_PGSQL_USERNAME", "postgres") %>
-  password: <%= ENV.fetch("DB_PGSQL_PASSWORD", "") %>
-  host: <%= ENV.fetch("DB_PGSQL_HOST", "localhost") %>
-  port: <%= ENV.fetch("DB_PGSQL_PORT", "5432") %>
+  primary:
+    <<: *default
+    database: dbviewer_demo_test
+    username: <%= ENV.fetch("DB_PGSQL_USERNAME", "postgres") %>
+    password: <%= ENV.fetch("DB_PGSQL_PASSWORD", "") %>
+    host: <%= ENV.fetch("DB_PGSQL_HOST", "localhost") %>
+    port: <%= ENV.fetch("DB_PGSQL_PORT", "5432") %>
+  company_profile:
+    <<: *default
+    database: dbviewer_company_profile_test
+    username: <%= ENV.fetch("DB_PGSQL_USERNAME", "postgres") %>
+    password: <%= ENV.fetch("DB_PGSQL_PASSWORD", "") %>
+    host: <%= ENV.fetch("DB_PGSQL_HOST", "localhost") %>
+    port: <%= ENV.fetch("DB_PGSQL_PORT", "5432") %>
+    migrations_paths: db/company_profile_migrate
 
 # Store production database settings for Docker deployment
 production:
@@ -38,6 +56,13 @@ production:
     username: <%= ENV.fetch("DB_PGSQL_USERNAME") { "postgres" } %>
     password: <%= ENV.fetch("DB_PGSQL_PASSWORD") { "" } %>
     host: <%= ENV.fetch("DB_PGSQL_HOST") { "localhost" } %>
+  company_profile:
+    <<: *default
+    database: <%= ENV.fetch("DB_PGSQL_COMPANY_PROFILE_DB") { "dbviewer_company_profile_production" } %>
+    username: <%= ENV.fetch("DB_PGSQL_USERNAME") { "postgres" } %>
+    password: <%= ENV.fetch("DB_PGSQL_PASSWORD") { "" } %>
+    host: <%= ENV.fetch("DB_PGSQL_HOST") { "localhost" } %>
+    migrations_paths: db/company_profile_migrate
   cache:
     <<: *default
     database: <%= ENV.fetch("DB_PGSQL_CACHE_DB") { "dbviewer_demo_production_cache" } %>

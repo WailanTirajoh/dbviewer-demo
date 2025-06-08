@@ -101,7 +101,7 @@ GEM
     connection_pool (2.5.3)
     crass (1.0.6)
     date (3.4.1)
-    dbviewer (0.6.6)
+    dbviewer (0.6.7)
       activerecord (>= 7.0.0)
       rails (>= 7.0.0)
     debug (1.10.0)
@@ -383,7 +383,7 @@ DEPENDENCIES
   bootsnap
   brakeman
   capybara
-  dbviewer (~> 0.6.6)
+  dbviewer
   debug
   devise (~> 4.9)
   dotenv
