@@ -57,7 +57,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ${{ secrets.DEPLOY_DIR }}
+        working-directory: ${{ env.DEPLOY_DIR }}
 
     steps:
       - name: Pull latest dbviewer image
