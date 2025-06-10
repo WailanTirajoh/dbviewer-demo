@@ -200,27 +200,75 @@
 
 .github-link {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 1rem 1.5rem;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
   background-color: #24292e;
   color: white;
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: 500;
   transition: all 0.3s ease;
+  min-height: 80px;
 }
 
 .github-link:hover {
   background-color: #2c3137;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .github-link svg {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.link-content {
+  flex: 1;
+}
+
+.link-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #fff;
+}
+
+.link-description {
+  font-size: 14px;
+  color: #8b949e;
+  line-height: 1.4;
+}
+
+.github-stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 30px 0 40px 0;
+  flex-wrap: wrap;
+}
+
+.github-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+}
+
+.stat-icon {
+  font-size: 18px;
+}
+
+.stat-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
 }
 
 @media (min-width: 768px) {
@@ -228,6 +276,58 @@
     flex-direction: row;
     justify-content: center;
     max-width: 800px;
+  }
+}
+
+@media (max-width: 768px) {
+  .installation-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .step-card {
+    padding: 20px;
+  }
+
+  .advanced-config {
+    padding: 20px;
+  }
+
+  .code-block pre {
+    font-size: 12px;
+    padding: 12px;
+  }
+
+  .hero-stats {
+    gap: 20px;
+  }
+
+  .stat-number {
+    font-size: 20px;
+  }
+
+  .github-stats {
+    gap: 15px;
+  }
+
+  .github-stat {
+    padding: 8px 12px;
+  }
+
+  .stat-text {
+    font-size: 12px;
+  }
+
+  .github-link {
+    padding: 1rem;
+    min-height: auto;
+  }
+
+  .link-title {
+    font-size: 16px;
+  }
+
+  .link-description {
+    font-size: 13px;
   }
 }
 
@@ -242,4 +342,243 @@
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
   box-sizing: border-box;
+}
+
+/* Installation section styles */
+.installation-section {
+  padding: 60px 20px;
+  margin-bottom: 60px;
+  background-color: #ffffff;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.installation-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.step-card {
+  background-color: #fff;
+  border: 2px solid #f1f3ff;
+  border-radius: 12px;
+  padding: 30px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.step-card:hover {
+  border-color: #5868e0;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(88, 104, 224, 0.1);
+}
+
+.step-number {
+  position: absolute;
+  top: -15px;
+  left: 30px;
+  background: linear-gradient(135deg, #5868e0, #4959ca);
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.step-content h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.step-content p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.code-block {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+}
+
+.code-header {
+  background-color: #e9ecef;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #6c757d;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.code-language {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.copy-btn {
+  background: #5868e0;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.copy-btn:hover {
+  background: #4959ca;
+}
+
+.copy-btn:active {
+  background: #3d4ab8;
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 16px;
+  background-color: #f8f9fa;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.code-block code {
+  font-family: inherit;
+  background: transparent;
+  color: inherit;
+}
+
+.advanced-config {
+  background-color: #f5f7ff;
+  padding: 40px;
+  border-radius: 12px;
+  margin-top: 40px;
+}
+
+.advanced-config h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.advanced-config p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.advanced-config .code-block {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Hero section enhancements */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(88, 104, 224, 0.1);
+  color: #5868e0;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  border: 1px solid rgba(88, 104, 224, 0.2);
+}
+
+.hero-badge svg {
+  width: 16px;
+  height: 16px;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #5868e0;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+/* Hero CTA button enhancements */
+.hero-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-cta.secondary {
+  background-color: transparent;
+  color: #5868e0;
+  border: 2px solid #5868e0;
+  box-shadow: 0 4px 12px rgba(88, 104, 224, 0.15);
+}
+
+.hero-cta.secondary:hover {
+  background-color: #5868e0;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(88, 104, 224, 0.3);
+}
+
+@media (max-width: 768px) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-cta {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
 }
