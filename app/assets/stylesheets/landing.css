@@ -83,6 +83,9 @@
   border-radius: 8px;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(88, 104, 224, 0.3);
+  text-align: center;
+  min-width: 180px;
+  box-sizing: border-box;
 }
 
 .hero-cta:hover {
@@ -279,55 +282,308 @@
   }
 }
 
+/* Mobile Responsive Styling */
 @media (max-width: 768px) {
-  .installation-steps {
-    grid-template-columns: 1fr;
+  /* Hero Section */
+  .landing-container {
+    padding: 20px 0; /* Remove horizontal padding */
   }
 
-  .step-card {
-    padding: 20px;
+  .hero-section {
+    padding: 40px 15px;
+    margin-bottom: 30px;
+    margin-left: 0;
+    margin-right: 0;
   }
 
-  .advanced-config {
-    padding: 20px;
+  .hero-title {
+    font-size: 2rem; /* Smaller title on mobile */
+    margin-bottom: 15px; /* Reduced bottom margin */
+    padding: 0 10px; /* Added horizontal padding */
   }
 
-  .code-block pre {
-    font-size: 12px;
-    padding: 12px;
+  .hero-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 25px; /* Reduced margin */
+    padding: 0 5px; /* Added horizontal padding */
   }
 
   .hero-stats {
-    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0; /* Adjusted vertical margin */
   }
 
-  .stat-number {
-    font-size: 20px;
+  .stat-item {
+    padding: 10px;
+    flex: 1;
+    width: auto;
   }
 
-  .github-stats {
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
     gap: 15px;
   }
 
-  .github-stat {
-    padding: 8px 12px;
+  .hero-cta {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    margin: 0;
   }
 
-  .stat-text {
-    font-size: 12px;
+  /* Features Section */
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
+
+  /* Installation Section */
+  .installation-section {
+    padding: 30px 0; /* Removed horizontal padding */
+  }
+
+  .installation-steps {
+    grid-template-columns: 1fr;
+    gap: 30px; /* Increased gap between steps */
+    margin-bottom: 30px;
+    padding: 15px 0 0 0; /* Removed horizontal padding */
+  }
+
+  .step-card {
+    padding: 25px 0; /* Removed horizontal padding */
+    padding-top: 30px; /* More top padding for mobile */
+    margin: 0; /* Removed horizontal margins */
+    width: 100%; /* Force full width */
+    margin-top: 25px; /* Increased top margin to account for the step number */
+  }
+
+  .step-number {
+    top: -20px; /* Position further up for better visibility */
+    left: 25px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .advanced-config {
+    padding: 25px 0; /* Removed horizontal padding */
+    margin-top: 30px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    border-radius: 0; /* Remove border radius */
+  }
+
+  .advanced-config .code-block {
+    max-width: 100%; /* Override max-width constraint on mobile */
+    margin: 0; /* Remove auto margins */
+    width: 100%;
+    border-radius: 0;
+  }
+
+  /* Code Block Styling */
+  .code-block {
+    margin-bottom: 15px;
+    max-width: none; /* Remove max-width constraint */
+    width: 100%; /* Force full width */
+    margin-left: 0; /* Remove auto margins */
+    margin-right: 0;
+    box-sizing: border-box;
+    border-radius: 0; /* Remove border radius on mobile */
+    border-left: none;
+    border-right: none;
+  }
+
+  .code-block pre {
+    padding: 12px 0; /* Remove horizontal padding */
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre;
+    word-wrap: normal;
+    -webkit-overflow-scrolling: touch; /* Enhanced smooth scrolling on iOS */
+  }
+
+  .code-header {
+    padding: 10px 6px; /* Reduced horizontal padding */
+    flex-wrap: wrap;
+  }
+
+  .copy-btn {
+    padding: 5px 10px;
+    margin-left: auto;
+  }
+
+  /* Github Section */
+  .github-stats {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .github-stat {
+    width: 100%;
+    text-align: center;
+    margin: 5px 0;
+  }
+
+  .github-links {
+    flex-direction: column;
+    gap: 15px;
   }
 
   .github-link {
-    padding: 1rem;
-    min-height: auto;
+    width: 100%;
+    padding: 15px;
+  }
+}
+
+/* Extra small screens optimization (iPhone SE, etc) */
+@media (max-width: 375px) {
+  .hero-title {
+    font-size: 1.6rem;
+    line-height: 1.2;
   }
 
-  .link-title {
+  .hero-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .hero-cta {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .hero-stats {
+    gap: 8px;
+    margin: 20px 0;
+  }
+
+  .stat-number {
+    font-size: 18px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+  }
+
+  .stat-item {
+    padding: 5px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+  }
+
+  .installation-section {
+    padding: 25px 10px;
+  }
+
+  .step-content h3 {
     font-size: 16px;
   }
 
-  .link-description {
-    font-size: 13px;
+  .step-number {
+    top: -20px;
+    left: 20px;
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+    border-width: 2px;
+  }
+
+  .code-block pre {
+    padding: 8px 0; /* Removed horizontal padding */
+    font-size: 0.75rem;
+    width: 100%;
+  }
+
+  .code-header {
+    padding: 8px 4px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .copy-btn {
+    padding: 3px 8px;
+    font-size: 10px;
+  }
+
+  .code-block code {
+    font-size: 0.75rem;
+    padding-left: 4px !important; /* Small left padding for readability */
+  }
+
+  .advanced-config {
+    padding: 20px 0; /* Removed horizontal padding */
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0;
+  }
+
+  .advanced-config h3 {
+    font-size: 16px;
+  }
+
+  /* Ensure code blocks use full width on smallest screens */
+  .code-block,
+  .code-block pre,
+  .code-header {
+    width: 100%;
+    box-sizing: border-box;
+    max-width: none;
+  }
+}
+
+/* Very small screens optimization */
+@media (max-width: 320px) {
+  .hero-stats {
+    gap: 5px;
+  }
+
+  .stat-number {
+    font-size: 16px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+  }
+
+  /* Full-width code blocks for tiny screens */
+  .code-block,
+  .advanced-config .code-block {
+    width: 100%;
+    margin: 0 0 15px 0;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .code-block pre {
+    padding: 6px 0;
+    font-size: 0.7rem;
+  }
+
+  .code-header {
+    padding: 6px 2px;
+  }
+
+  .advanced-config {
+    padding: 15px 0;
+    border-radius: 0;
+  }
+
+  .landing-container {
+    padding: 15px 0;
   }
 }
 
@@ -349,6 +605,10 @@
   padding: 60px 20px;
   margin-bottom: 60px;
   background-color: #ffffff;
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+  overflow: hidden; /* Contain any overflow */
 }
 
 .section-subtitle {
@@ -366,6 +626,10 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
   margin-bottom: 50px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 5px;
+  padding-top: 15px; /* Added top padding for the grid to accommodate step numbers */
 }
 
 .step-card {
@@ -373,8 +637,13 @@
   border: 2px solid #f1f3ff;
   border-radius: 12px;
   padding: 30px;
+  padding-top: 35px; /* Increased top padding to make room for the step number */
+  margin-top: 20px; /* Added top margin to provide space for the number */
   transition: all 0.3s ease;
   position: relative;
+  overflow: visible; /* Changed to visible to ensure the number is not cut off */
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .step-card:hover {
@@ -385,18 +654,21 @@
 
 .step-number {
   position: absolute;
-  top: -15px;
+  top: -10px; /* Reduced negative top position */
   left: 30px;
   background: linear-gradient(135deg, #5868e0, #4959ca);
   color: white;
-  width: 30px;
-  height: 30px;
+  width: 40px; /* Larger circle */
+  height: 40px; /* Larger circle */
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 20px; /* Larger font size */
+  box-shadow: 0 4px 8px rgba(88, 104, 224, 0.4); /* Enhanced shadow */
+  z-index: 10; /* Higher z-index */
+  border: 2px solid white; /* Add a white border for better visibility */
 }
 
 .step-content h3 {
@@ -404,7 +676,7 @@
   font-weight: 600;
   color: #333;
   margin-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 5px; /* Reduced top margin since we added padding to the parent */
 }
 
 .step-content p {
@@ -421,6 +693,10 @@
   overflow: hidden;
   font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
 }
 
 .code-header {
@@ -466,6 +742,8 @@
   font-size: 14px;
   line-height: 1.5;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  max-width: 100%;
 }
 
 .code-block code {
@@ -474,6 +752,17 @@
   padding: 0 !important;
   border-radius: 0 !important;
   white-space: pre;
+  display: inline-block;
+  min-width: 100%;
+  -webkit-text-size-adjust: none; /* Prevent iOS text size adjustment */
+  tab-size: 2; /* Smaller tab size for mobile */
+}
+
+@media (max-width: 768px) {
+  .code-block code {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
 }
 
 .advanced-config {
@@ -481,6 +770,9 @@
   padding: 40px;
   border-radius: 12px;
   margin-top: 40px;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
 }
 
 .advanced-config h3 {
@@ -501,6 +793,7 @@
 .advanced-config .code-block {
   max-width: 800px;
   margin: 0 auto;
+  width: 100%;
 }
 
 /* Hero section enhancements */
@@ -555,6 +848,9 @@
   gap: 15px;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 30px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hero-cta.secondary {
@@ -574,11 +870,21 @@
   .hero-actions {
     flex-direction: column;
     align-items: center;
+    gap: 20px; /* Increased gap between buttons */
+    margin-top: 30px; /* Added top margin */
+    margin-bottom: 20px; /* Added bottom margin */
   }
 
   .hero-cta {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
     text-align: center;
+    padding: 14px 28px; /* Slightly smaller padding */
+    font-size: 16px; /* Slightly smaller font */
+    display: block; /* Ensure block display */
+  }
+
+  .hero-cta.secondary {
+    margin-top: 5px; /* Extra margin for secondary button */
   }
 }
