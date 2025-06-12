@@ -17,14 +17,14 @@ development:
     database: dbviewer_demo_development
     username: <%= ENV.fetch("DB_PGSQL_USERNAME", "postgres") %>
     password: <%= ENV.fetch("DB_PGSQL_PASSWORD", "") %>
-    host: <%= ENV.fetch("DB_PGSQL_HOST", "localhost") %>
+    # host: <%= ENV.fetch("DB_PGSQL_HOST", "localhost") %>
     port: <%= ENV.fetch("DB_PGSQL_PORT", "5432") %>
   company_profile:
     <<: *default
     database: dbviewer_company_profile_development
     username: <%= ENV.fetch("DB_PGSQL_USERNAME", "postgres") %>
     password: <%= ENV.fetch("DB_PGSQL_PASSWORD", "") %>
-    host: <%= ENV.fetch("DB_PGSQL_HOST", "localhost") %>
+    # host: <%= ENV.fetch("DB_PGSQL_HOST", "localhost") %>
     port: <%= ENV.fetch("DB_PGSQL_PORT", "5432") %>
     migrations_paths: db/company_profile_migrate
 

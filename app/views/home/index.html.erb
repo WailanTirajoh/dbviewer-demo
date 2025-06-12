@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="hero-actions">
-        <%= link_to "Try Live Demo", new_user_session_path, class: "hero-cta primary" %>
+        <%= link_to "Try Live Demo", dbviewer_path, class: "hero-cta primary" %>
         <a href="#installation" class="hero-cta secondary">Quick Setup</a>
       </div>
     </div>
@@ -129,7 +129,7 @@
               <span class="code-language">ruby</span>
               <button class="copy-btn" onclick="copyToClipboard('step1-code')">Copy</button>
             </div>
-            <pre id="step1-code"><code>gem "dbviewer", group: :development</code></pre>
+            <pre id="step1-code"><code>gem "dbviewer"</code></pre>
           </div>
         </div>
       </div>
@@ -195,10 +195,24 @@ end</code></pre>
         </div>
         <pre id="config-code"><code># config/initializers/dbviewer.rb
 Dbviewer.configure do |config|
-  config.per_page_options = [10, 20, 50, 100, 250]
-  config.default_per_page = 20
-  config.max_query_length = 10000
-  config.enable_query_logging = true
+  # Datatable Pagination Settings
+  config.per_page_options = [ 10, 20, 50, 100, 250 ] # Default pagination options
+  config.default_per_page = 50                       # Default records per page
+
+  # SQL Query Settings
+  config.max_query_length = 10000                    # Maximum SQL query length
+  config.cache_expiry = 300                          # Cache expiration in seconds
+  config.max_records = 10000                         # Maximum records to display
+  config.query_timeout = 30                          # SQL query timeout in seconds
+
+  # Export Options
+  config.enable_data_export = false                  # Whether to allow data exporting
+
+  # Query Logging options (Disabled by default on Non Development Environments)
+  config.enable_query_logging = true                 
+  config.query_logging_mode = :file                  
+  config.query_log_path = "log/dbviewer.log"         
+  config.max_memory_queries = 1000                   
   
   # Basic Authentication (Recommended for production)
   config.admin_credentials = {
@@ -211,8 +225,13 @@ Dbviewer.configure do |config|
     primary: {
       connection_class: "ActiveRecord::Base",
       name: "Primary Database"
+    },
+    secondary: {
+      connection_class: "SecondaryBaseModel",
+      name: "Secondary Database (Blog)"
     }
   }
+  config.current_connection = :primary
 end</code></pre>
       </div>
     </div>
@@ -223,7 +242,7 @@ end</code></pre>
     <p class="hero-subtitle" style="margin-bottom: 30px;">
       Experience DBViewer's full capabilities with our interactive demo featuring real sample data.
     </p>
-    <%= link_to "Access Live Demo", new_user_session_path, class: "demo-cta" %>
+    <%= link_to "Access Live Demo", dbviewer_path, class: "demo-cta" %>
   </section>
 
   <section class="github-section">

@@ -30,3 +30,43 @@ function copyToClipboard(elementId) {
 
 // Make function globally available
 window.copyToClipboard = copyToClipboard;
+
+// Initialize syntax highlighting and smooth scrolling
+document.addEventListener("DOMContentLoaded", function () {
+  // Add language classes to code elements
+  document.querySelectorAll(".code-block").forEach((codeBlock) => {
+    const language = codeBlock
+      .querySelector(".code-language")
+      ?.textContent?.trim()
+      .toLowerCase();
+    const codeElement = codeBlock.querySelector("pre code");
+
+    if (codeElement && language) {
+      codeElement.classList.add(`language-${language}`);
+    }
+  });
+
+  // Initialize highlight.js (globally available from CDN)
+  if (window.hljs) {
+    window.hljs.highlightAll();
+  }
+
+  // Handle smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute("href");
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop,
+          behavior: "smooth",
+        });
+
+        // Update URL hash without jumping
+        history.pushState(null, null, targetId);
+      }
+    });
+  });
+});

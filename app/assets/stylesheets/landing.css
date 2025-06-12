@@ -415,22 +415,23 @@
 }
 
 .code-block {
-  background-color: #f8f9fa;
-  border: 1px solid #e9ecef;
+  background-color: #282c34;
+  border: 1px solid #3e4451;
   border-radius: 8px;
   overflow: hidden;
   font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .code-header {
-  background-color: #e9ecef;
+  background-color: #21252b;
   padding: 8px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 12px;
-  color: #6c757d;
-  border-bottom: 1px solid #dee2e6;
+  color: #9da5b4;
+  border-bottom: 1px solid #181a1f;
 }
 
 .code-language {
@@ -461,19 +462,18 @@
 .code-block pre {
   margin: 0;
   padding: 16px;
-  background-color: #f8f9fa;
-  color: #333;
+  background-color: transparent !important;
   font-size: 14px;
   line-height: 1.5;
   overflow-x: auto;
-  white-space: pre-wrap;
-  word-wrap: break-word;
 }
 
 .code-block code {
-  font-family: inherit;
-  background: transparent;
-  color: inherit;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace !important;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  white-space: pre;
 }
 
 .advanced-config {

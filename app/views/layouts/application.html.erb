@@ -16,7 +16,21 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
-
+    
+    <!-- Highlight.js CDN - Latest version with the style you prefer -->
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/atom-one-dark.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
+    <!-- Additional languages as needed -->
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/ruby.min.js"></script>
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/bash.min.js"></script>
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/sql.min.js"></script>
+    <!-- Initialize syntax highlighting -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        hljs.highlightAll();
+      });
+    </script>
+    
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -28,20 +42,6 @@
     <% end %>
     <% if alert.present? %>
       <div class="alert"><%= alert %></div>
-    <% end %>
-    
-    <% if user_signed_in? %>
-      <div class="user-nav">
-        <div class="container">
-          <div class="brand">
-            <strong>DB Viewer Demo</strong>
-          </div>
-          <div class="user-info">
-            Logged in as <span class="user-email"><%= current_user.email %></span> 
-            <%= link_to "Logout", destroy_user_session_path, class: "logout-btn", data: { turbo_method: :delete } %>
-          </div>
-        </div>
-      </div>
     <% end %>
     
     <%= yield %>
