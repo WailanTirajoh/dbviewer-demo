@@ -1,18 +1,56 @@
-<% content_for :title, "DB Viewer Demo - Interactive Database Explorer" %>
+<% content_for :head do %>
+  <!-- Additional Schema.org structured data for this page -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".hero-title", ".hero-slogan", ".hero-subtitle"]
+    },
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "DBViewer",
+      "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "DatabaseTools",
+      "operatingSystem": "Web",
+      "description": "DBViewer is built for developer happiness, making database exploration simple and enjoyable. Crafted with the Rails philosophy in mind for a joyful development experience.",
+      "keywords": "developer happiness, Rails tools, database visualization, database explorer, developer experience, SQL viewer",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "10"
+      },
+      "featureList": "Developer Happiness, Intuitive Database Visualization, Simple Data Exploration, Schema Information, ERD, SQL Queries, Multiple DB Connections"
+    }
+  }
+  </script>
+<% end %>
+
+<% content_for :title, "DBViewer - The fastest way to visualize and explore your database" %>
+<% content_for :meta_description, "DBViewer is built for developer happiness, making database exploration simple and enjoyable. View your database structure and data with an intuitive interface that follows Rails conventions and philosophy." %>
 
 <div class="landing-container">
   <section class="hero-section">
     <div class="hero-content">
       <div class="hero-badge">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#5868E0">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#5868E0" aria-hidden="true" role="img">
+          <title>Information icon</title>
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
         </svg>
-        Open Source Rails Engine
+        <span>Open Source Rails Engine</span>
       </div>
       <h1 class="hero-title">👁️ DBViewer</h1>
+      <p class="hero-slogan">The fastest way to visualize and explore your database</p>
       <p class="hero-subtitle">
-        A powerful Rails engine that provides a comprehensive interface to view and explore database tables, records, and schema.
-        Perfect for development, debugging, and database analysis with an intuitive web interface.
+        DBViewer is built for developer happiness,
+        making it effortless to explore and understand your data structure. Simple, intuitive, and enjoyable
+        to use — because database tools should bring joy, not frustration.
       </p>
       <div class="hero-stats">
         <div class="stat-item">

@@ -1,12 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title><%= content_for(:title) || "Dbviewer Demo" %></title>
+    <title><%= content_for(:title) || "DBViewer Demo - The fastest way to visualize and explore your database" %></title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,shrink-to-fit=no">
+    <meta name="description" content="<%= content_for(:meta_description) || 'DBViewer is a powerful Rails engine that provides a comprehensive interface to visualize and explore database tables, records, and schema. Perfect for development, debugging, and database analysis.' %>">
+    <meta name="keywords" content="database viewer, SQL visualization, Rails engine, database explorer, database GUI, PostgreSQL viewer, MySQL viewer, SQLite viewer, database debugging, database schema visualization, database analysis tool">
+    <meta name="author" content="Wailan Tirajoh">
+    <meta name="robots" content="index, follow">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
-    <meta name="theme-color" content="#282c34">
+    <meta name="theme-color" content="#5868E0">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<%= request.original_url %>">
+    <meta property="og:title" content="<%= content_for(:title) || 'DBViewer Demo - The fastest way to visualize and explore your database' %>">
+    <meta property="og:description" content="<%= content_for(:meta_description) || 'DBViewer is a powerful Rails engine that provides a comprehensive interface to visualize and explore database tables, records, and schema.' %>">
+    <meta property="og:image" content="<%= request.base_url %>/og-image.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="<%= request.original_url %>">
+    <meta name="twitter:title" content="<%= content_for(:title) || 'DBViewer Demo - The fastest way to visualize and explore your database' %>">
+    <meta name="twitter:description" content="<%= content_for(:meta_description) || 'DBViewer is a powerful Rails engine that provides a comprehensive interface to visualize and explore database tables, records, and schema.' %>">
+    <meta name="twitter:image" content="<%= request.base_url %>/og-image.png">
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -18,6 +38,7 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="canonical" href="<%= request.original_url %>">
     
     <!-- Highlight.js CDN - Latest version with the style you prefer -->
     <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/atom-one-dark.min.css">
@@ -31,6 +52,28 @@
       document.addEventListener('DOMContentLoaded', function() {
         hljs.highlightAll();
       });
+    </script>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "DBViewer",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "description": "A powerful Rails engine that provides a comprehensive interface to visualize and explore database tables, records, and schema.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Wailan Tirajoh"
+      },
+      "screenshot": "<%= request.base_url %>/og-image.png"
+    }
     </script>
     
     <%# Includes all stylesheet files in app/assets/stylesheets %>

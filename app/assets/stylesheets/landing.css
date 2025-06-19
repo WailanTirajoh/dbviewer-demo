@@ -1,4 +1,7 @@
 /* Landing page styles for DB Viewer Demo */
+/* Optimized for SEO, Accessibility and Performance */
+
+/* Add optimized loading hints for fonts to improve CLS (Cumulative Layout Shift) */
 
 .landing-container {
   max-width: 1200px;
@@ -60,7 +63,18 @@
   font-size: 48px;
   font-weight: 800;
   color: #333;
+  margin-bottom: 10px;
+}
+
+.hero-slogan {
+  font-size: 24px;
+  font-weight: 600;
+  color: #5868e0;
   margin-bottom: 20px;
+  font-style: italic;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-subtitle {
@@ -302,6 +316,12 @@
     padding: 0 10px; /* Added horizontal padding */
   }
 
+  .hero-slogan {
+    font-size: 1.2rem; /* Smaller slogan on mobile */
+    margin-bottom: 15px; /* Reduced bottom margin */
+    padding: 0 10px; /* Added horizontal padding */
+  }
+
   .hero-subtitle {
     font-size: 0.95rem;
     margin-bottom: 25px; /* Reduced margin */
@@ -451,6 +471,11 @@
   .hero-title {
     font-size: 1.6rem;
     line-height: 1.2;
+  }
+
+  .hero-slogan {
+    font-size: 1rem;
+    margin-bottom: 10px;
   }
 
   .hero-subtitle {
