@@ -26,14 +26,14 @@
         "ratingValue": "5",
         "reviewCount": "10"
       },
-      "featureList": "Developer Happiness, Intuitive Database Visualization, Simple Data Exploration, Schema Information, ERD, SQL Queries, Multiple DB Connections"
+      "featureList": "Developer Happiness, Intuitive Database Visualization, Simple Data Exploration, Schema Information, ERD, SQL Queries, Multiple DB Connections, PII Data Masking"
     }
   }
   </script>
 <% end %>
 
 <% content_for :title, "DBViewer - The fastest way to visualize and explore your database" %>
-<% content_for :meta_description, "DBViewer is built for developer happiness, making database exploration simple and enjoyable. View your database structure and data with an intuitive interface that follows Rails conventions and philosophy." %>
+<% content_for :meta_description, "DBViewer is built for developer happiness, making database exploration simple and enjoyable. View your database structure and data with PII protection and an intuitive interface that follows Rails conventions." %>
 
 <div class="landing-container">
   <section class="hero-section">
@@ -133,6 +133,18 @@
         <h3 class="feature-title">Secure & Production Ready</h3>
         <p class="feature-description">
           Read-only operations, HTTP Basic Authentication, SQL injection protection, and query logging with audit trails.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#5868E0">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1-1h2v6h-2zm0 8h2v2h-2z M1 12l2-2 2 2-2 2z M21 12l-2-2-2 2 2 2z"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">PII Data Masking</h3>
+        <p class="feature-description">
+          Protect sensitive data with configurable masking rules. Automatically mask emails, phone numbers, SSNs, and custom fields while preserving data structure for development.
         </p>
       </div>
 
@@ -270,6 +282,42 @@ Dbviewer.configure do |config|
     }
   }
   config.current_connection = :primary
+end</code></pre>
+      </div>
+    </div>
+
+    <div class="advanced-config">
+      <h3>🔐 PII Data Masking Configuration</h3>
+      <p>Protect sensitive data with configurable masking rules:</p>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-language">ruby</span>
+          <button class="copy-btn" onclick="copyToClipboard('pii-config-code')">Copy</button>
+        </div>
+        <pre id="pii-config-code"><code># config/initializers/dbviewer.rb
+Dbviewer.configure do |config|
+  config.enable_pii_masking = true                   # Enable PII masking (default: true)
+end
+
+# Define PII masking rules
+Dbviewer.configure_pii do |pii|
+  # Built-in masking types
+  pii.mask 'users.email', with: :email              # john@example.com → jo***@example.com
+  pii.mask 'users.phone', with: :phone              # +1234567890 → +1***90
+  pii.mask 'users.ssn', with: :ssn                  # 123456789 → ***-**-6789
+  pii.mask 'payments.card_number', with: :credit_card # 1234567890123456 → ****-****-****-3456
+  pii.mask 'users.api_key', with: :full_redact      # any_value → ***REDACTED***
+
+  # Custom masking with lambda
+  pii.mask 'users.salary', with: ->(value) { value ? '$***,***' : value }
+
+  # Define reusable custom masks
+  pii.custom_mask :ip_mask, ->(value) {
+    return value if value.nil?
+    parts = value.split('.')
+    "#{parts[0]}.#{parts[1]}.***.***.***"
+  }
+  pii.mask 'logs.ip_address', with: :ip_mask
 end</code></pre>
       </div>
     </div>
