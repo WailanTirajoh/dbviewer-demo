@@ -102,7 +102,7 @@ GEM
     crass (1.0.6)
     csv (3.3.5)
     date (3.4.1)
-    dbviewer (0.9.3)
+    dbviewer (0.9.4.pre.alpha.1)
       activerecord (>= 7.0.0)
       csv
       propshaft (>= 1.1.0)
@@ -160,7 +160,8 @@ GEM
     loofah (2.24.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    mail (2.8.1)
+    mail (2.9.0.beta2)
+      logger
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
@@ -264,7 +265,7 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.3.0)
-    rdoc (6.14.1)
+    rdoc (6.14.2)
       erb
       psych (>= 4.0.0)
     regexp_parser (2.10.0)
