@@ -169,37 +169,177 @@
 }
 
 .demo-section {
-  background-color: #f5f7ff;
+  background: linear-gradient(135deg, #f5f7ff 0%, #ffffff 100%);
   padding: 60px 20px;
   border-radius: 12px;
   text-align: center;
+  margin: 40px 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-.demo-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
+.demo-section:before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(
+    135deg,
+    rgba(88, 104, 224, 0.1) 0%,
+    rgba(88, 104, 224, 0) 70%
+  );
+  border-radius: 50%;
+  top: -150px;
+  left: -150px;
+  z-index: 0;
+}
+
+.demo-section:after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(
+    135deg,
+    rgba(88, 104, 224, 0.1) 0%,
+    rgba(88, 104, 224, 0) 70%
+  );
+  border-radius: 50%;
+  bottom: -150px;
+  right: -150px;
+  z-index: 0;
+}
+
+.demo-features {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 40px auto;
+  max-width: 1000px;
+  position: relative;
+  z-index: 1;
+}
+
+.demo-feature {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(88, 104, 224, 0.1);
+}
+
+.demo-feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(88, 104, 224, 0.15);
+  border-color: rgba(88, 104, 224, 0.3);
+}
+
+.demo-feature:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #5868e0, #7b86e2);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.demo-feature:hover:before {
+  transform: scaleX(1);
+}
+
+.demo-feature-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+  background: rgba(88, 104, 224, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.demo-feature:hover .demo-feature-icon {
+  background: rgba(88, 104, 224, 0.2);
+  transform: scale(1.1);
+}
+
+.demo-feature h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.demo-feature p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.demo-cta-container {
+  margin-top: 40px;
+  position: relative;
+  z-index: 1;
 }
 
 .demo-cta {
   display: inline-block;
-  padding: 14px 28px;
-  background-color: #5868e0;
-  color: #fff;
+  padding: 16px 36px;
   font-size: 18px;
   font-weight: 600;
-  text-decoration: none;
+  background: linear-gradient(135deg, #5868e0, #4857c5);
+  color: #fff;
   border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(88, 104, 224, 0.3);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.demo-cta:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transition: all 0.8s ease;
 }
 
 .demo-cta:hover {
-  background-color: #4959ca;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(88, 104, 224, 0.4);
 }
 
-/* GitHub section styling */
+.demo-cta:hover:after {
+  left: 100%;
+}
+
 .github-section {
   padding: 3rem 1rem;
   text-align: center;
@@ -891,25 +1031,461 @@
   box-shadow: 0 6px 16px rgba(88, 104, 224, 0.3);
 }
 
+/* Feature Details Styles for Data Management Section */
+.feature-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+  text-align: left;
+}
+
+.feature-detail-item {
+  background-color: #f8f9fa;
+  border-left: 4px solid #5868e0;
+  padding: 20px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.feature-detail-item:hover {
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.feature-detail-item strong {
+  color: #5868e0;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+/* Feature List Styles for Security Features */
+.feature-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.feature-list li {
+  padding: 12px 0;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.feature-list li:last-child {
+  border-bottom: none;
+}
+
+.feature-list li:before {
+  content: "✓";
+  color: #5868e0;
+  font-weight: bold;
+  margin-right: 12px;
+  background-color: rgba(88, 104, 224, 0.1);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.feature-list li strong {
+  color: #333;
+  font-weight: 600;
+}
+
+/* Demo Screenshot Enhancements */
+.demo-screenshot {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  margin: 20px 0 40px;
+  background: #fff;
+  padding: 10px;
+}
+
+.screenshot-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  transition: transform 0.5s ease;
+}
+
+.demo-screenshot:hover .screenshot-img {
+  transform: scale(1.02);
+}
+
+/* Enhanced GitHub Stats Section */
+.github-stats {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.github-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  width: 140px;
+  transition: all 0.3s ease;
+}
+
+.github-stat:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.stat-text {
+  font-weight: 500;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Code Block Improvements */
+.code-block {
+  position: relative;
+  background-color: #282c34;
+  border-radius: 10px;
+  margin: 25px 0;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #5868e0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: #21252b;
+  border-bottom: 1px solid #333842;
+}
+
+.code-language {
+  color: #abb2bf;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.copy-btn {
+  background-color: rgba(88, 104, 224, 0.2);
+  color: #abb2bf;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  background-color: rgba(88, 104, 224, 0.4);
+  color: #fff;
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.code-block code {
+  font-family: "JetBrains Mono", Menlo, Monaco, "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #abb2bf;
+}
+
+/* Responsive Improvements for New Sections */
 @media (max-width: 768px) {
-  .hero-actions {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px; /* Increased gap between buttons */
-    margin-top: 30px; /* Added top margin */
-    margin-bottom: 20px; /* Added bottom margin */
+  .feature-details {
+    grid-template-columns: 1fr;
   }
 
-  .hero-cta {
-    width: 100%;
-    max-width: 280px;
-    text-align: center;
-    padding: 14px 28px; /* Slightly smaller padding */
-    font-size: 16px; /* Slightly smaller font */
-    display: block; /* Ensure block display */
+  .feature-detail-item {
+    padding: 15px;
   }
 
-  .hero-cta.secondary {
-    margin-top: 5px; /* Extra margin for secondary button */
+  .github-stat {
+    width: calc(50% - 20px);
+    padding: 15px 5px;
   }
+
+  .demo-screenshot {
+    padding: 5px;
+  }
+
+  .feature-list li {
+    padding: 10px 0;
+  }
+}
+
+/* Animation Effects */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(88, 104, 224, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(88, 104, 224, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(88, 104, 224, 0);
+  }
+}
+
+/* Apply animations to elements */
+.feature-card,
+.step-card,
+.advanced-config,
+.hero-cta,
+.github-link,
+.demo-feature {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.feature-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.feature-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.feature-card:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.feature-card:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.feature-card:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.feature-card:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.feature-card:nth-child(8) {
+  animation-delay: 0.7s;
+}
+
+.demo-feature:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.demo-feature:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.demo-feature:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.step-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.step-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.step-card:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.step-card:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.hero-cta.primary {
+  animation: pulse 2s infinite;
+}
+
+/* Interactive Demo Screenshot */
+.demo-screenshot {
+  position: relative;
+  overflow: hidden;
+}
+
+.demo-screenshot:after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  animation: shine 4s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(30deg);
+  }
+  20%,
+  100% {
+    transform: translateX(100%) rotate(30deg);
+  }
+}
+
+/* Enhance Data Management Section */
+.feature-details .feature-detail-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.feature-details .feature-detail-item:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.feature-details .feature-detail-item:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.feature-details .feature-detail-item:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.feature-details .feature-detail-item:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+/* Enhance Hero Section */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section:before,
+.hero-section:after {
+  animation: pulse 15s infinite alternate;
+}
+
+.hero-stats .stat-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-stats .stat-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(88, 104, 224, 0.15);
+}
+
+/* Add a focus effect on hover to feature cards */
+.feature-card:hover .feature-icon svg {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(88, 104, 224, 0.5));
+}
+
+.feature-card .feature-icon svg {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Remove animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .feature-card,
+  .step-card,
+  .advanced-config,
+  .hero-cta,
+  .github-link,
+  .feature-details .feature-detail-item,
+  .hero-section:before,
+  .hero-section:after,
+  .demo-screenshot:after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Enhanced Interactive Elements */
+.copy-success {
+  background-color: #4caf50 !important;
+  color: white !important;
+}
+
+.copy-error {
+  background-color: #f44336 !important;
+  color: white !important;
+}
+
+/* Intersection Observer Animation Classes */
+.feature-card,
+.step-card,
+.advanced-config,
+.demo-screenshot {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced Code Block Interaction */
+.code-block pre::-webkit-scrollbar {
+  height: 8px;
+}
+
+.code-block pre::-webkit-scrollbar-track {
+  background: #282c34;
+}
+
+.code-block pre::-webkit-scrollbar-thumb {
+  background-color: #5868e0;
+  border-radius: 20px;
+  border: 3px solid #282c34;
+}
+
+.code-block pre:hover::-webkit-scrollbar-thumb {
+  background-color: #7080e5;
+}
+
+/* Enhanced Feature Detail Items */
+.feature-detail-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-detail-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background: linear-gradient(to bottom, #5868e0, #7080e5);
+  transition: height 0.3s ease;
+}
+
+.feature-detail-item:hover::before {
+  height: 100%;
 }

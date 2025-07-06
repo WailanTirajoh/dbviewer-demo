@@ -14,8 +14,8 @@
       "applicationCategory": "DeveloperApplication",
       "applicationSubCategory": "DatabaseTools",
       "operatingSystem": "Web",
-      "description": "DBViewer is built for developer happiness, making database exploration simple and enjoyable. Crafted with the Rails philosophy in mind for a joyful development experience.",
-      "keywords": "developer happiness, Rails tools, database visualization, database explorer, developer experience, SQL viewer",
+      "description": "DBViewer is built for developer happiness, making database exploration and management simple and enjoyable. Full CRUD functionality for easy data management with security and PII protection built in.",
+      "keywords": "developer happiness, Rails tools, database visualization, database explorer, database management, CRUD operations, data editing, developer experience, SQL viewer, database CRUD",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -24,16 +24,16 @@
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5",
-        "reviewCount": "10"
+        "reviewCount": "12"
       },
-      "featureList": "Developer Happiness, Intuitive Database Visualization, Simple Data Exploration, Schema Information, ERD, SQL Queries, Multiple DB Connections, PII Data Masking"
+      "featureList": "Developer Happiness, Full CRUD Operations, Data Management, Intuitive Database Visualization, Schema Information, ERD, SQL Queries, Multiple DB Connections, PII Data Masking, Data Security"
     }
   }
   </script>
 <% end %>
 
-<% content_for :title, "DBViewer - The fastest way to visualize and explore your database" %>
-<% content_for :meta_description, "DBViewer is built for developer happiness, making database exploration simple and enjoyable. View your database structure and data with PII protection and an intuitive interface that follows Rails conventions." %>
+<% content_for :title, "DBViewer - The fastest way to visualize, explore, and manage your database" %>
+<% content_for :meta_description, "DBViewer is built for developer happiness with full CRUD functionality, making database exploration and management simple and enjoyable. View, create, edit and delete records with PII protection and an intuitive interface that follows Rails conventions." %>
 
 <div class="landing-container">
   <section class="hero-section">
@@ -48,9 +48,8 @@
       <h1 class="hero-title">👁️ DBViewer</h1>
       <p class="hero-slogan">The fastest way to visualize and explore your database</p>
       <p class="hero-subtitle">
-        DBViewer is built for developer happiness,
-        making it effortless to explore and understand your data structure. Simple, intuitive, and enjoyable
-        to use. Because database tools should bring joy, not frustration.
+        DBViewer is a powerful Rails engine that provides a comprehensive interface to view, explore, and manage database tables, records, and schema.
+        It's designed for development, debugging, and database analysis, offering a clean and intuitive way to interact with your application's database.
       </p>
       <div class="hero-stats">
         <div class="stat-item">
@@ -58,8 +57,8 @@
           <div class="stat-label">Key Features</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">100%</div>
-          <div class="stat-label">Read-Only</div>
+          <div class="stat-number">Full</div>
+          <div class="stat-label">CRUD Operations</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">Multiple</div>
@@ -127,12 +126,24 @@
       <div class="feature-card">
         <div class="feature-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#5868E0">
+            <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Data Management</h3>
+        <p class="feature-description">
+          Full CRUD operations (Create, Read, Update, Delete) for database records with intuitive interfaces and validation.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#5868E0">
             <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/>
           </svg>
         </div>
-        <h3 class="feature-title">Secure & Production Ready</h3>
+        <h3 class="feature-title">Access Control</h3>
         <p class="feature-description">
-          Read-only operations, HTTP Basic Authentication, SQL injection protection, and query logging with audit trails.
+          Table and column-level access restrictions, authentication, and configurable security features for production safety.
         </p>
       </div>
 
@@ -144,7 +155,7 @@
         </div>
         <h3 class="feature-title">PII Data Masking</h3>
         <p class="feature-description">
-          Protect sensitive data with configurable masking rules. Automatically mask emails, phone numbers, SSNs, and custom fields while preserving data structure for development.
+          Protect sensitive data with configurable masking rules. Automatically mask emails, phone numbers, SSNs, and custom fields while preserving data structure.
         </p>
       </div>
 
@@ -233,10 +244,33 @@ end</code></pre>
           </div>
         </div>
       </div>
+      
+      <div class="step-card">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>API-only Applications</h3>
+          <p>For Rails API-only applications, add Flash middleware:</p>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-language">ruby</span>
+              <button class="copy-btn" onclick="copyToClipboard('step5-code')">Copy</button>
+            </div>
+            <pre id="step5-code"><code># config/application.rb
+module YourApp
+  class Application < Rails::Application
+    # ... existing configuration
+
+    # Required for DBViewer flash messages
+    config.middleware.use ActionDispatch::Flash
+  end
+end</code></pre>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="advanced-config">
-      <h3>🔧 Advanced Configuration</h3>
+      <h3>🔧 Configuration Options</h3>
       <p>Customize DBViewer with the generated configuration file:</p>
       <div class="code-block">
         <div class="code-header">
@@ -246,30 +280,38 @@ end</code></pre>
         <pre id="config-code"><code># config/initializers/dbviewer.rb
 Dbviewer.configure do |config|
   # Datatable Pagination Settings
-  config.per_page_options = [ 10, 20, 50, 100, 250 ] # Default pagination options
-  config.default_per_page = 50                       # Default records per page
+  config.per_page_options = [10, 20, 50, 100, 250]   # Default pagination options
+  config.default_per_page = 20                        # Default records per page
 
   # SQL Query Settings
-  config.max_query_length = 10000                    # Maximum SQL query length
-  config.cache_expiry = 300                          # Cache expiration in seconds
-  config.max_records = 10000                         # Maximum records to display
-  config.query_timeout = 30                          # SQL query timeout in seconds
+  config.max_query_length = 10000                     # Maximum SQL query length
+  config.cache_expiry = 300                           # Cache expiration in seconds
+  config.max_records = 10000                          # Maximum records to return in any query
+  config.query_timeout = 30                           # SQL query timeout in seconds
 
-  # Export Options
-  config.enable_data_export = false                  # Whether to allow data exporting
+  # Data Management Options
+  config.enable_data_export = false                   # Whether to allow data exporting
+  config.enable_record_deletion = true                # Whether to allow record deletion
+  config.enable_record_editing = true                 # Whether to allow record editing
 
-  # Query Logging options (Disabled by default on Non Development Environments)
-  config.enable_query_logging = true                 
-  config.query_logging_mode = :file                  
-  config.query_log_path = "log/dbviewer.log"         
-  config.max_memory_queries = 1000                   
-  
-  # Basic Authentication (Recommended for production)
-  config.admin_credentials = {
-    username: "admin",
-    password: "your_secure_password"
-  }
-  
+  # Query Logging Options
+  config.enable_query_logging = false                 # Enable or disable query logging completely
+  config.query_logging_mode = :memory                 # Storage mode for SQL queries (:memory or :file)
+  config.query_log_path = "log/dbviewer.log"          # Path for query log file when in :file mode
+  config.max_memory_queries = 1000                    # Maximum number of queries to store in memory
+
+  # Authentication Options
+  # config.admin_credentials = { username: "admin", password: "your_secure_password" }
+
+  # Table and Column Access Control
+  # config.access_control_mode = :whitelist           # :whitelist, :blacklist, or :none (default)
+  # config.allowed_tables = ['users', 'orders', 'products']  # Only these tables accessible
+  # config.blocked_tables = ['admin_users', 'sensitive_data'] # These tables blocked
+  # config.blocked_columns = {                        # Hide sensitive columns from specific tables
+  #   'users' => ['password_digest', 'api_key', 'secret_token'],
+  #   'orders' => ['internal_notes']
+  # }
+
   # Multiple Database Support
   config.database_connections = {
     primary: {
@@ -277,11 +319,14 @@ Dbviewer.configure do |config|
       name: "Primary Database"
     },
     secondary: {
-      connection_class: "SecondaryBaseModel",
-      name: "Secondary Database (Blog)"
+      connection_class: "SecondaryDatabase",
+      name: "Blog Database"
     }
   }
   config.current_connection = :primary
+
+  # Disable DBViewer completely in production
+  # config.disabled = Rails.env.production?
 end</code></pre>
       </div>
     </div>
@@ -321,6 +366,39 @@ Dbviewer.configure_pii do |pii|
 end</code></pre>
       </div>
     </div>
+    
+    <div class="advanced-config">
+      <h3>🔒 Security Features</h3>
+      <p>Protect your database with comprehensive security features:</p>
+      <ul class="feature-list">
+        <li><strong>Data Management Security:</strong> Create and modify operations with proper validation</li>
+        <li><strong>SQL Validation:</strong> Prevents potentially harmful operations with comprehensive validation</li>
+        <li><strong>Query Limits:</strong> Automatic LIMIT clause to prevent excessive data retrieval</li>
+        <li><strong>Authentication:</strong> HTTP Basic Authentication with username/password protection</li>
+        <li><strong>Access Control:</strong> Whitelist/blacklist specific tables or columns</li>
+        <li><strong>Production Safety:</strong> Option to completely disable in production environments</li>
+      </ul>
+    </div>
+    
+    <div class="advanced-config">
+      <h3>🔄 Data Management Features</h3>
+      <p>DBViewer provides a complete set of CRUD operations for your database records:</p>
+      <div class="feature-details">
+        <div class="feature-detail-item">
+          <strong>Create:</strong> Add new records via a user-friendly modal form with field validation
+        </div>
+        <div class="feature-detail-item">
+          <strong>Read:</strong> Browse and view detailed record information with relationship navigation
+        </div>
+        <div class="feature-detail-item">
+          <strong>Update:</strong> Edit existing records through an intuitive form interface
+        </div>
+        <div class="feature-detail-item">
+          <strong>Delete:</strong> Remove records with confirmation dialogs to prevent accidental deletion
+        </div>
+      </div>
+      <p>All data management features can be individually enabled or disabled through configuration options.</p>
+    </div>
   </section>
 
   <section class="demo-section">
@@ -328,7 +406,41 @@ end</code></pre>
     <p class="hero-subtitle" style="margin-bottom: 30px;">
       Experience DBViewer's full capabilities with our interactive demo featuring real sample data.
     </p>
-    <%= link_to "Access Live Demo", dbviewer_path, class: "demo-cta" %>
+    
+    <div class="demo-features">
+      <div class="demo-feature">
+        <div class="demo-feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#5868E0">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>
+            <path d="M7 12h2v5H7zm4-7h2v12h-2zm4 4h2v8h-2z"/>
+          </svg>
+        </div>
+        <h3>Dashboard Overview</h3>
+        <p>Visualize your database structure and access key statistics at a glance</p>
+      </div>
+      <div class="demo-feature">
+        <div class="demo-feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#5868E0">
+            <path d="M3 3h18v18H3V3zm16 2h-6v6h6V5zM5 5v6h6V5H5zm6 16v-6H5v6h6zm2 0h6v-6h-6v6z"/>
+          </svg>
+        </div>
+        <h3>Table Management</h3>
+        <p>Browse, edit, and manage database records with full CRUD operations</p>
+      </div>
+      <div class="demo-feature">
+        <div class="demo-feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#5868E0">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-7v-4h2v4h3l-4 4-4-4h3z"/>
+          </svg>
+        </div>
+        <h3>Interactive Schema</h3>
+        <p>Explore database relationships through visual diagrams</p>
+      </div>
+    </div>
+    
+    <div class="demo-cta-container">
+      <%= link_to "Access Live Demo", dbviewer_path, class: "demo-cta" %>
+    </div>
   </section>
 
   <section class="github-section">
@@ -350,7 +462,13 @@ end</code></pre>
         <span class="stat-icon">🔒</span>
         <span class="stat-text">Security Focused</span>
       </div>
+      <div class="github-stat">
+        <span class="stat-icon">✏️</span>
+        <span class="stat-text">Full CRUD</span>
+      </div>
     </div>
+    
+    
     <div class="github-links">
       <a href="https://github.com/WailanTirajoh/dbviewer-demo" target="_blank" class="github-link">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -376,5 +494,5 @@ end</code></pre>
   </div>
   
   <footer class="footer">
-    <p>&copy; <%= Date.today.year %> DB Viewer Demo | A secure, interactive database explorer</p>
+    <p>&copy; <%= Date.today.year %> DB Viewer Demo | A secure, interactive database explorer with full CRUD capabilities</p>
   </footer>

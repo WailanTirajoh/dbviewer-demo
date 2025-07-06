@@ -73,6 +73,41 @@ window.copyToClipboard = copyToClipboard;
 
 // Initialize syntax highlighting and smooth scrolling
 document.addEventListener("DOMContentLoaded", function () {
+  // Setup smooth scrolling for anchor links
+  function setupSmoothScrolling() {
+    // Get all anchor links
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+    // Add click event listener to each anchor link
+    anchorLinks.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // Get the target element
+        const targetId = this.getAttribute("href");
+        if (targetId === "#") return;
+
+        const targetElement = document.querySelector(targetId);
+        if (!targetElement) return;
+
+        // Add a small delay to ensure any layout shifts have completed
+        setTimeout(() => {
+          // Scroll to target element smoothly
+          targetElement.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+
+          // Update URL hash without the jump
+          history.pushState(null, null, targetId);
+        }, 10);
+      });
+    });
+  }
+
+  // Run smooth scrolling setup
+  setupSmoothScrolling();
+
   // Add language classes to code elements
   document.querySelectorAll(".code-block").forEach((codeBlock) => {
     const language = codeBlock
@@ -148,22 +183,32 @@ document.addEventListener("DOMContentLoaded", function () {
     window.hljs.highlightAll();
   }
 
-  // Handle smooth scrolling for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute("href");
-      const targetElement = document.querySelector(targetId);
+  // Add intersection observer for elements to animate when they come into view
+  if (
+    "IntersectionObserver" in window &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    };
 
-      if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop,
-          behavior: "smooth",
-        });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
 
-        // Update URL hash without jumping
-        history.pushState(null, null, targetId);
-      }
+    // Observe all feature cards, step cards, advanced-config sections, and demo features
+    const elementsToObserve = document.querySelectorAll(
+      ".feature-card, .step-card, .advanced-config, .demo-feature, .demo-cta-container"
+    );
+    elementsToObserve.forEach((element) => {
+      observer.observe(element);
     });
-  });
+  }
 });
